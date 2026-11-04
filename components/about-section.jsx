@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Terminal, MapPin, Compass, Sparkles } from "lucide-react";
+import { getAssetPath } from "../src/lib/utils";
 
 export function AboutSection() {
   return (
@@ -22,7 +23,7 @@ export function AboutSection() {
           <div className="relative group rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-2xl">
             <div className="relative aspect-[4/5] w-full overflow-hidden">
               <Image
-                src="/assets/me.webp"
+                src={getAssetPath("/assets/me.webp")}
                 alt="Yevhenii Shorobura"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

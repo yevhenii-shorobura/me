@@ -10,6 +10,7 @@ import {
   KeyRound,
   Radio,
 } from "lucide-react";
+import { getAssetPath } from "../src/lib/utils";
 
 const SHORADO_PILLARS = [
   {
@@ -110,7 +111,7 @@ export function ShoradoSection() {
 
         <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl mt-3">
           <Image
-            src="/assets/shorado-screenshot.webp"
+            src={getAssetPath("/assets/shorado-screenshot.webp")}
             alt="Screenshot of Shorado interfaces"
             fill
             sizes="(max-width: 1200px) 100vw, 1100px"
