@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Code2,
   Layout,
@@ -8,81 +10,44 @@ import {
   Cloud,
   Compass,
 } from "lucide-react";
+import { useLanguage } from "../src/lib/language-context";
 
-const STACK_CATEGORIES = [
-  {
-    category: "Core",
-    icon: Code2,
-    description: "Foundational web & execution runtime",
-    skills: ["JavaScript", "Node.js", "HTML5", "CSS3"],
-  },
-  {
-    category: "Frontend",
-    icon: Layout,
-    description: "Declarative, high-speed user interfaces",
-    skills: ["React", "Next.js", "TailwindCSS", "Zustand"],
-  },
-  {
-    category: "Backend",
-    icon: Server,
-    description: "High-throughput APIs & microservices",
-    skills: ["Node.js", "Fastify", "Express"],
-  },
-  {
-    category: "Data",
-    icon: Database,
-    description: "Structured storage, caching & key-value stores",
-    skills: ["PostgreSQL", "SQLite", "Redis"],
-  },
-  {
-    category: "Systems",
-    icon: Cpu,
-    description: "Protocols, authentication & offline layers",
-    skills: ["REST APIs", "WebSockets", "WebAuthn / Passkeys", "PWA / Service Workers"],
-  },
-  {
-    category: "AI & LLM Integration",
-    icon: Bot,
-    description: "Model integration, moderation & AI tooling",
-    skills: ["Together AI API", "ChatGPT API", "ChatGPT Moderation API", "Vercel AI"],
-  },
-  {
-    category: "Services & Cloud",
-    icon: Cloud,
-    description: "Edge networks, database hosts & deployments",
-    skills: ["Cloudflare R2 & CDN", "Vercel Deploying", "Supabase", "Firebase FCM"],
-  },
-  {
-    category: "Exploring & Mobile",
-    icon: Compass,
-    description: "Active research & expansion domains",
-    skills: ["React Native", "Kotlin", "Swift", "Go"],
-  },
+const STACK_ICONS = [
+  Code2,
+  Layout,
+  Server,
+  Database,
+  Cpu,
+  Bot,
+  Cloud,
+  Compass,
 ];
 
 export function StackSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="stack" className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-24 sm:py-32 scroll-mt-20">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <span className="font-mono text-accent text-sm font-semibold tracking-widest uppercase">
-          04 — Technologies
+          {t.stack.tag}
         </span>
         <div className="h-px bg-white/10 flex-1 max-w-32" />
       </div>
 
       <h2 className="text-3xl sm:text-5xl font-unbounded font-bold text-white tracking-tight mb-4">
-        The Stack
+        {t.stack.title}
       </h2>
 
       <p className="font-mono text-zinc-400 text-sm sm:text-base max-w-2xl mb-12">
-        Grouped by what it&apos;s for. Tools chosen for resilience, clarity, and real operational predictability.
+        {t.stack.subtitle}
       </p>
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {STACK_CATEGORIES.map((cat) => {
-          const Icon = cat.icon;
+        {t.stack.categories.map((cat, idx) => {
+          const Icon = STACK_ICONS[idx] || Code2;
           return (
             <div
               key={cat.category}
@@ -99,7 +64,7 @@ export function StackSection() {
                 </div>
 
                 <p className="font-mono text-xs text-zinc-500 mb-5 leading-normal">
-                  {cat.description}
+                  {cat.desc}
                 </p>
 
                 <div className="space-y-2">
@@ -116,7 +81,7 @@ export function StackSection() {
               </div>
 
               <div className="mt-6 pt-3 border-t border-white/5 font-mono text-[11px] text-zinc-600 group-hover:text-zinc-400 transition-colors">
-                {cat.skills.length} technologies
+                {cat.skills.length} {t.stack.techCountSuffix}
               </div>
             </div>
           );

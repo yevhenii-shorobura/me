@@ -21,6 +21,7 @@ Official personal engineering portfolio of **Yevhenii Shorobura**, full-stack so
 - **Interactive ASCII Black Hole Engine:** A custom-coded HTML5 Canvas simulation rendering a spinning relativistic accretion disk with Doppler boosting, photon rings, and gravitational lensing that smoothly zooms on user scroll.
 - **Deep-Dive Engineering Breakdowns:** Detailed architectural teardowns of **Shorado** (event-log schemas, passkey auth, WebSocket chat, Sharp WebP pipeline, HTTP 410 tombstones).
 - **R&D Lab:** Showcase of real-world experiments covering Android viewport workarounds, hardware barcode scanning, push service worker decoupling, and edge caching (~20ms TTFB).
+- **Bilingual Support (EN / DE):** Full client-side localization for English and German with instantaneous switching, localStorage persistence, and auto-detection.
 - **Modern Minimalist Bento UI:** High-contrast dark theme (`#050102`), burnt orange accents (`#e44500`), smooth typography pairing (`Unbounded` + `Geist Mono`), and glassmorphism.
 - **Static Export & Zero Server Cost:** Pre-rendered via Next.js App Router static export (`output: "export"`) with automated GitHub Pages deployment.
 
@@ -68,6 +69,8 @@ Official personal engineering portfolio of **Yevhenii Shorobura**, full-stack so
 │   │   ├── layout.js           # Fonts, root HTML wrapper & SEO metadata
 │   │   └── page.js             # Root landing page assembly
 │   └── lib/
+│       ├── language-context.jsx # React context for EN/DE localization & switching
+│       ├── translations.js     # Dictionaries for English & German
 │       └── utils.js            # Path normalization helpers for GitHub Pages
 └── next.config.mjs             # Next.js static export & basePath configuration
 ```

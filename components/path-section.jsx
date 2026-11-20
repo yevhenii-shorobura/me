@@ -1,50 +1,17 @@
-import { CheckCircle2, TrendingUp } from "lucide-react";
+"use client";
 
-const PATH_STEPS = [
-  {
-    step: "01",
-    title: "Foundations",
-    subtitle: "Understanding the web from the ground up.",
-    tools: ["HTML5", "CSS3", "Modern JavaScript", "DOM APIs"],
-    detail: "Mastering browser engines, execution models, layouts, semantic structuring, and networking primitives.",
-  },
-  {
-    step: "02",
-    title: "Interfaces",
-    subtitle: "Component architecture & reactive UI systems.",
-    tools: ["React", "State Machines", "Design Systems", "Tailwind CSS"],
-    detail: "Building declarative UI components engineered for instant render cycles, clean abstractions, and smooth responsiveness.",
-  },
-  {
-    step: "03",
-    title: "Applications",
-    subtitle: "APIs, data models, identity, and bi-directional communications.",
-    tools: ["Node.js", "REST APIs", "Databases", "WebSockets", "Auth"],
-    detail: "Connecting rich clients to resilient server runtimes, transactional data flows, and secure session management.",
-  },
-  {
-    step: "04",
-    title: "Systems",
-    subtitle: "Distributed edge, storage, caching, and database durability.",
-    tools: ["Next.js", "PostgreSQL", "Redis", "Cloudflare CDN / R2"],
-    detail: "Designing architecture that scales predictably under burst traffic with minimal latency and high availability.",
-  },
-  {
-    step: "05",
-    title: "Products",
-    subtitle: "Shipping and operating real software in production, solo.",
-    tools: ["Shorado", "Solo Engineering", "User Telemetry", "Operations"],
-    detail: "Translating engineering capability into real, living platforms serving actual users with zero corporate overhead.",
-  },
-];
+import { TrendingUp } from "lucide-react";
+import { useLanguage } from "../src/lib/language-context";
 
 export function PathSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="path" className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-24 sm:py-32 scroll-mt-20">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <span className="font-mono text-accent text-sm font-semibold tracking-widest uppercase">
-          06 — Growth
+          {t.path.tag}
         </span>
         <div className="h-px bg-white/10 flex-1 max-w-32" />
       </div>
@@ -52,22 +19,22 @@ export function PathSection() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
           <h2 className="text-3xl sm:text-5xl font-unbounded font-bold text-white tracking-tight mb-3">
-            Path
+            {t.path.title}
           </h2>
           <p className="font-mono text-zinc-400 text-sm sm:text-base max-w-2xl">
-            Capability, not chronology. The progressive layers of engineering mastery built by shipping.
+            {t.path.subtitle}
           </p>
         </div>
 
         <div className="flex items-center gap-2 font-mono text-xs text-zinc-400 px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.02] w-fit">
           <TrendingUp size={14} className="text-accent" />
-          <span>Iterative Progression</span>
+          <span>{t.path.badge}</span>
         </div>
       </div>
 
       {/* Vertical / Staggered Progression Cards */}
       <div className="space-y-4">
-        {PATH_STEPS.map((step, index) => (
+        {t.path.steps.map((step) => (
           <div
             key={step.step}
             className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm hover:border-accent/40 hover:bg-white/[0.04] transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-6 group"

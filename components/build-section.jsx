@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Monitor,
   Smartphone,
@@ -5,83 +7,36 @@ import {
   Server,
   Database,
   Radio,
-  ArrowRight,
 } from "lucide-react";
+import { useLanguage } from "../src/lib/language-context";
 
-const BUILD_DOMAINS = [
-  {
-    index: "01",
-    title: "Interfaces",
-    icon: Monitor,
-    description: "Component-driven UI built for clarity and speed, not decoration.",
-    tech: ["React", "Next.js", "Tailwind CSS"],
-    highlight: "Clarity & Speed",
-  },
-  {
-    index: "02",
-    title: "Applications",
-    icon: Smartphone,
-    description: "Full products with robust auth, predictable state, and real-time interaction.",
-    tech: ["WebAuthn", "Zustand", "WebSocket"],
-    highlight: "State & Auth",
-  },
-  {
-    index: "03",
-    title: "Products",
-    icon: Package,
-    description: "Taking all of the above and shipping it as something people actually use — end to end. Shorado is the proof.",
-    tech: ["Shorado", "Solo-built", "In production"],
-    highlight: "End-to-End Proof",
-  },
-  {
-    index: "04",
-    title: "Backends",
-    icon: Server,
-    description: "APIs and services designed cleanly around the data they actually need to move.",
-    tech: ["Node.js", "Fastify", "Express"],
-    highlight: "Data-driven APIs",
-  },
-  {
-    index: "05",
-    title: "Data",
-    icon: Database,
-    description: "Schemas built for growth — immutable event logs and query indexes that hold under load.",
-    tech: ["PostgreSQL", "Redis", "SQLite"],
-    highlight: "Resilient Schemas",
-  },
-  {
-    index: "06",
-    title: "Real-time systems",
-    icon: Radio,
-    description: "Sockets and push pipelines that stay synchronized with zero wasteful polling.",
-    tech: ["WebSocket", "FCM", "Service Workers"],
-    highlight: "Push & Sync",
-  },
-];
+const DOMAIN_ICONS = [Monitor, Smartphone, Package, Server, Database, Radio];
 
 export function BuildSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="build" className="w-full max-w-6xl mx-auto px-6 sm:px-10 py-24 sm:py-32 scroll-mt-20">
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <span className="font-mono text-accent text-sm font-semibold tracking-widest uppercase">
-          03 — Capabilities
+          {t.build.tag}
         </span>
         <div className="h-px bg-white/10 flex-1 max-w-32" />
       </div>
 
       <h2 className="text-3xl sm:text-5xl font-unbounded font-bold text-white tracking-tight mb-4">
-        What I build
+        {t.build.title}
       </h2>
 
       <p className="font-mono text-zinc-400 text-sm sm:text-base max-w-2xl mb-12">
-        Interfaces, applications, backends, and the systems that connect them into cohesive products.
+        {t.build.subtitle}
       </p>
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {BUILD_DOMAINS.map((domain) => {
-          const Icon = domain.icon;
+        {t.build.domains.map((domain, idx) => {
+          const Icon = DOMAIN_ICONS[idx] || Monitor;
           return (
             <div
               key={domain.index}
@@ -102,7 +57,7 @@ export function BuildSection() {
                 </h3>
 
                 <p className="font-mono text-zinc-400 text-sm leading-relaxed mb-6">
-                  {domain.description}
+                  {domain.desc}
                 </p>
               </div>
 

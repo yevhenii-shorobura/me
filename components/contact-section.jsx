@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
   Globe2,
 } from "lucide-react";
+import { useLanguage } from "../src/lib/language-context";
 
 function GithubIcon({ size = 20, className = "" }) {
   return (
@@ -48,15 +49,9 @@ function LinkedinIcon({ size = 20, className = "" }) {
   );
 }
 
-const LANGUAGES = [
-  { code: "UKR", level: "++", name: "Ukrainian", desc: "Native proficiency" },
-  { code: "ENG", level: "+", name: "English", desc: "Fluent / Professional" },
-  { code: "DEU", level: "+-", name: "German", desc: "Intermediate / Working" },
-  { code: "RUS", level: "+", name: "Russian", desc: "Fluent" },
-];
-
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
+  const { t } = useLanguage();
   const email = "hello@shorado.com.ua";
 
   const handleCopyEmail = () => {
@@ -72,7 +67,7 @@ export function ContactSection() {
       {/* Header */}
       <div className="flex items-center gap-3 mb-4">
         <span className="font-mono text-accent text-sm font-semibold tracking-widest uppercase">
-          07 — Contact
+          {t.contact.tag}
         </span>
         <div className="h-px bg-white/10 flex-1 max-w-32" />
       </div>
@@ -80,11 +75,11 @@ export function ContactSection() {
       {/* Main Pitch */}
       <div className="mb-12">
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-unbounded font-bold text-white tracking-tight mb-4">
-          Have a project? <br className="hidden sm:inline" />
-          <span className="text-accent">Let&apos;s build something.</span>
+          {t.contact.pitchPrefix} <br className="hidden sm:inline" />
+          <span className="text-accent">{t.contact.pitchAccent}</span>
         </h2>
         <p className="font-mono text-zinc-400 text-sm sm:text-base max-w-xl">
-          Available for engineering roles, technical advisory, or ambitious product builds.
+          {t.contact.subtitle}
         </p>
       </div>
 
@@ -95,15 +90,15 @@ export function ContactSection() {
           <div className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm space-y-6">
             <div className="flex items-center justify-between">
               <span className="font-mono text-xs text-accent uppercase tracking-wider flex items-center gap-2">
-                <Mail size={14} /> Direct Channel
+                <Mail size={14} /> {t.contact.directChannel}
               </span>
-              <span className="font-mono text-xs text-zinc-500">Munich, Germany</span>
+              <span className="font-mono text-xs text-zinc-500">{t.contact.locationCity}</span>
             </div>
 
             {/* Email Box */}
             <div className="p-4 rounded-xl bg-black/40 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1">
-                <span className="font-mono text-xs text-zinc-500">Primary Email</span>
+                <span className="font-mono text-xs text-zinc-500">{t.contact.primaryEmail}</span>
                 <a
                   href={`mailto:${email}`}
                   className="block font-mono font-semibold text-lg sm:text-xl text-white hover:text-accent transition-colors"
@@ -114,6 +109,7 @@ export function ContactSection() {
 
               <div className="flex items-center gap-2">
                 <button
+                  type="button"
                   onClick={handleCopyEmail}
                   className="px-3 py-2 rounded-lg border border-white/10 bg-white/[0.03] hover:border-accent/50 text-zinc-300 hover:text-white font-mono text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
                   title="Copy email address"
@@ -121,12 +117,12 @@ export function ContactSection() {
                   {copied ? (
                     <>
                       <Check size={14} className="text-emerald-400" />
-                      <span className="text-emerald-400 font-semibold">Copied!</span>
+                      <span className="text-emerald-400 font-semibold">{t.contact.copied}</span>
                     </>
                   ) : (
                     <>
                       <Copy size={14} />
-                      <span>Copy</span>
+                      <span>{t.contact.copy}</span>
                     </>
                   )}
                 </button>
@@ -135,7 +131,7 @@ export function ContactSection() {
                   href={`mailto:${email}`}
                   className="px-4 py-2 rounded-lg bg-accent/90 hover:bg-accent text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors"
                 >
-                  <span>Write</span>
+                  <span>{t.contact.write}</span>
                   <ArrowUpRight size={14} />
                 </a>
               </div>
@@ -185,10 +181,10 @@ export function ContactSection() {
           <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.015] backdrop-blur-sm">
             <figure className="space-y-2">
               <blockquote className="font-mono text-xs sm:text-sm text-zinc-400 italic">
-                &ldquo;The measure of who we are is what we do with what we have.&rdquo;
+                {t.contact.quote}
               </blockquote>
               <figcaption className="font-mono text-xs text-accent font-semibold">
-                — Vince Lombardi
+                {t.contact.quoteAuthor}
               </figcaption>
             </figure>
           </div>
@@ -199,20 +195,20 @@ export function ContactSection() {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="font-mono text-xs text-accent uppercase tracking-wider flex items-center gap-2">
-                <Globe2 size={14} /> Languages
+                <Globe2 size={14} /> {t.contact.languagesHeader}
               </span>
-              <span className="font-mono text-xs text-zinc-500">Communication</span>
+              <span className="font-mono text-xs text-zinc-500">{t.contact.languagesSub}</span>
             </div>
 
             <h3 className="font-unbounded font-bold text-lg text-white mb-2">
-              Spoken Languages
+              {t.contact.languagesTitle}
             </h3>
             <p className="font-mono text-xs text-zinc-400 mb-6">
-              Comfortable working in cross-functional international and European teams.
+              {t.contact.languagesDesc}
             </p>
 
             <div className="space-y-3">
-              {LANGUAGES.map((lng) => (
+              {t.contact.languages.map((lng) => (
                 <div
                   key={lng.code}
                   className="p-3.5 rounded-xl border border-white/5 bg-white/[0.015] flex items-center justify-between"
@@ -239,7 +235,7 @@ export function ContactSection() {
           </div>
 
           <div className="pt-4 border-t border-white/5 font-mono text-[11px] text-zinc-500 text-center">
-            Currently based in Munich, Germany (CET / UTC+1)
+            {t.contact.locationNote}
           </div>
         </div>
       </div>
@@ -247,11 +243,11 @@ export function ContactSection() {
       {/* Footer */}
       <footer className="mt-20 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-zinc-500">
         <div>
-          © 2026 <span className="text-zinc-300">Yevhenii Shorobura</span>. All rights reserved.
+          © 2026 <span className="text-zinc-300">Yevhenii Shorobura</span>. {t.contact.copyright}
         </div>
         <div className="flex items-center gap-4">
           <a href="#" className="hover:text-accent transition-colors">
-            Back to Top ↑
+            {t.contact.backToTop}
           </a>
         </div>
       </footer>
