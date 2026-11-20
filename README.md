@@ -137,9 +137,3 @@ The repository includes a GitHub Actions workflow in [`.github/workflows/deploy.
 - **GitHub:** [@mczheniok](https://github.com/mczheniok)
 - **LinkedIn:** [linkedin.com/in/yevhenii-shorobura](https://www.linkedin.com/in/yevhenii-shorobura/)
 - **Location:** Munich, Germany (orig. Kyiv, Ukraine)
-
----
-
-## 📄 License
-
-This project is open-source under the [MIT License](LICENSE).
