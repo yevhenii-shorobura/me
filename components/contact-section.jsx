@@ -140,7 +140,7 @@ export function ContactSection() {
             {/* Social Links */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
               <a
-                href="https://github.com/mczheniok"
+                href="https://github.com/yevhenii-shorobura"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-accent/40 hover:bg-white/[0.04] transition-all flex items-center justify-between group"
@@ -151,7 +151,7 @@ export function ContactSection() {
                     <div className="font-mono text-sm font-semibold text-white group-hover:text-accent transition-colors">
                       GitHub
                     </div>
-                    <div className="font-mono text-xs text-zinc-500">@mczheniok</div>
+                    <div className="font-mono text-xs text-zinc-500">@yevhenii-shorobura</div>
                   </div>
                 </div>
                 <ArrowUpRight size={16} className="text-zinc-500 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
